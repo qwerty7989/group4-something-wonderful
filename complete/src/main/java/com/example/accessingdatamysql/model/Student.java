@@ -9,10 +9,9 @@ public class Student {
 	private String name;
 	private String email;
 
-	//@JsonIgnore
-	//@JsonProperty(value="is_active")	
-	private Boolean isActive; 
-
+	// @JsonIgnore
+	// @JsonProperty(value="is_active")
+	private Boolean isActive;
 
 	public Integer getId() {
 		return id;
@@ -30,7 +29,6 @@ public class Student {
 		this.name = name;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
@@ -38,7 +36,6 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public Boolean getIsActive() {
 		return isActive;
@@ -48,14 +45,9 @@ public class Student {
 		this.isActive = isActive;
 	}
 
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", isActive=" + isActive + "]";
 	}
-
-
-
-
 
 }

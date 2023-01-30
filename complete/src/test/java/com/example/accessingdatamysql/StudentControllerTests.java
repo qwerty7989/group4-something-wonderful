@@ -41,8 +41,8 @@ public class StudentControllerTests {
 	@Autowired
 	private MockMvc mockMvc;
 
-    @MockBean
-    private StudentRepository studentRepository;
+	@MockBean
+	private StudentRepository studentRepository;
 
 	@MockBean
 	private StudentService studentService;
@@ -67,7 +67,7 @@ public class StudentControllerTests {
 
 		when(studentService.findAll()).thenReturn(ls);
 
-		MvcResult result = this.mockMvc.perform(get("/students"))//.andDo(print())
+		MvcResult result = this.mockMvc.perform(get("/students"))// .andDo(print())
 				.andExpect(status().isOk())
 				.andReturn();
 
@@ -75,22 +75,21 @@ public class StudentControllerTests {
 		JSONArray jsonArray = new JSONArray(content);
 
 		assertEquals(2, jsonArray.length());
-		
+
 		JSONObject jsonObject = jsonArray.getJSONObject(0);
 		assertEquals(123, jsonObject.getInt("id"));
 		assertEquals("name123", jsonObject.getString("name"));
 
 	}
 
-
 	@Test
 	public void addNewStudent_shouldReturnSaved() throws Exception {
 
 		String dummyRequestBody = """
-							{"name":"name123", "email":"name123@gmail.com"}""";
+				{"name":"name123", "email":"name123@gmail.com"}""";
 
-		StudentEntity dummyStudentEntity = new StudentEntity(123, "name123", 1);                                         // 0: Expired, 1: Active (Default)
-		dummyStudentEntity.setEmail("name123@gmail.com");							
+		StudentEntity dummyStudentEntity = new StudentEntity(123, "name123", 1); // 0: Expired, 1: Active (Default)
+		dummyStudentEntity.setEmail("name123@gmail.com");
 		when(studentRepository.save(any())).thenReturn(dummyStudentEntity);
 
 		Student dummyStudent = new Student();
@@ -102,7 +101,7 @@ public class StudentControllerTests {
 
 		MvcResult result = this.mockMvc.perform(post("/students")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(dummyRequestBody))//.andDo(print())
+				.content(dummyRequestBody))// .andDo(print())
 				.andExpect(status().is2xxSuccessful())
 				.andReturn();
 
@@ -118,14 +117,13 @@ public class StudentControllerTests {
 
 	}
 
-
 	@Test
 	public void addNewStudentWithoutEmail_shouldReturnNullEmail() throws Exception {
 
 		String jsonBody = """
-							{"name":"name123"}""";
-		
-		StudentEntity dummyStudentEntity = new StudentEntity(123, "name123", 0);    
+				{"name":"name123"}""";
+
+		StudentEntity dummyStudentEntity = new StudentEntity(123, "name123", 0);
 		when(studentRepository.save(any())).thenReturn(dummyStudentEntity);
 
 		Student dummyStudent = new Student();
@@ -137,7 +135,7 @@ public class StudentControllerTests {
 
 		MvcResult result = this.mockMvc.perform(post("/students")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(jsonBody))//.andDo(print())
+				.content(jsonBody))// .andDo(print())
 				.andExpect(status().is2xxSuccessful())
 				.andReturn();
 
@@ -149,7 +147,6 @@ public class StudentControllerTests {
 		assertEquals(123, jsonUser.getInt("id"));
 		assertEquals("name123", jsonUser.getString("name"));
 		assertTrue(jsonUser.isNull("email"));
-
 
 	}
 }
