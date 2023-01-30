@@ -6,4 +6,9 @@ Your first "git commit":
 $ git commit -a -m "Your message here".
 ```
 
+Push your commit to your remote repository:
+```
+$ git push
+```
+
 ## CI/CD with Jenkins
