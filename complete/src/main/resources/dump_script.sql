@@ -2,11 +2,11 @@
 drop table courses;
 CREATE TABLE courses(  
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    create_time DATETIME,
+    course_id int,
     name VARCHAR(255),
     credit int,
-    max_seat int,
-    course_id int
+    max_seat int    
+    create_time DATETIME,
 );
 
 insert into courses(course_id, name, credit, max_seat)
