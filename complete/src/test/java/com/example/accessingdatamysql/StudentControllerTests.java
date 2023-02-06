@@ -148,5 +148,6 @@ public class StudentControllerTests {
 		assertEquals("name123", jsonUser.getString("name"));
 		assertTrue(jsonUser.isNull("email"));
 
+		// For commit
 	}
 }
