@@ -11,5 +11,5 @@ import com.example.accessingdatamysql.service.repo.entity.CourseEntity;
 public interface CourseRepository extends CrudRepository<CourseEntity, Integer> {
 
     @Query("SELECT * FROM COURSES")
-    public Course queryCourse();    
+    public void queryCourse();    
 }
