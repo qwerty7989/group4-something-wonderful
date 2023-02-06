@@ -11,5 +11,5 @@ import com.example.accessingdatamysql.service.repo.entity.CourseEntity;
 public interface CourseRepository extends CrudRepository<CourseEntity, Integer> {
 
     @Query("SELECT * FROM COURSES")
-    public void queryCourse();    
+    public Iterable<CourseEntity> queryCourse();    
 }

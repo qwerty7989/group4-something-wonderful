@@ -114,4 +114,8 @@ public class Course {
             "}";
     }
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
